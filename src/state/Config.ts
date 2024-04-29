@@ -1,0 +1,8 @@
+const SCENE = {
+  NUM_SPHERES: 10,
+  NUM_RINGS: 15,
+  START_RADIUS: 1,
+  SPHERE_RADIUS: 0.5,
+};
+
+export { SCENE };

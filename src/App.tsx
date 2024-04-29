@@ -17,8 +17,8 @@ const App: FC = () => {
         <Scene>
           <arcRotateCamera
             name="camera1"
-            alpha={0}
-            beta={Math.PI / 3}
+            alpha={(Math.PI * 3) / 2}
+            beta={Math.PI / 2}
             radius={10}
             target={Vector3.Zero()}
           />
@@ -27,7 +27,6 @@ const App: FC = () => {
             intensity={0.7}
             direction={new Vector3(0, 1, 0)}
           />
-          <ground name="ground" width={6} height={6} />
           <Instances />
         </Scene>
       </Engine>
