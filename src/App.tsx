@@ -18,8 +18,8 @@ const App: FC = () => {
           <arcRotateCamera
             name="camera1"
             alpha={(Math.PI * 3) / 2}
-            beta={Math.PI / 2}
-            radius={10}
+            beta={Math.PI / 3}
+            radius={40}
             target={Vector3.Zero()}
           />
           <hemisphericLight

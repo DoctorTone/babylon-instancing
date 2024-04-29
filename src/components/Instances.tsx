@@ -6,11 +6,46 @@ import { polarToCartesian } from "../state/Utils";
 const Instances = () => {
   const scene = useScene();
   const spherePositions = [];
-  const angleIncrement = (Math.PI * 2) / SCENE.NUM_SPHERES;
+  let angleIncrement;
+  const spheresPerRing = [
+    SCENE.NUM_SPHERES,
+    SCENE.NUM_SPHERES,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+    SCENE.NUM_SPHERES * 8,
+  ];
 
   let angle;
-  for (let ring = 0; ring < SCENE.NUM_RINGS; ++ring) {
-    for (let sphere = 0; sphere < SCENE.NUM_SPHERES; ++sphere) {
+  for (let ring = 0; ring < spheresPerRing.length; ++ring) {
+    for (let sphere = 0; sphere < spheresPerRing[ring]; ++sphere) {
+      angleIncrement = (Math.PI * 2) / spheresPerRing[ring];
       angle = sphere * angleIncrement;
       const { x, y } = polarToCartesian(SCENE.START_RADIUS + ring, angle);
       spherePositions.push(new Vector3(x, 0, y));
