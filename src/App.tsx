@@ -2,6 +2,7 @@ import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { Scene, Engine } from "react-babylonjs";
 import { FC } from "react";
 import Instances from "./components/Instances";
+import { Color3 } from "@babylonjs/core";
 
 const App: FC = () => {
   return (
@@ -32,7 +33,12 @@ const App: FC = () => {
             width={100}
             height={100}
             position={new Vector3(0, -1, 0)}
-          />
+          >
+            <standardMaterial
+              name={"groundMat"}
+              diffuseColor={Color3.Black()}
+            />
+          </ground>
           <Instances animate={true} />
         </Scene>
       </Engine>

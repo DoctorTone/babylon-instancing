@@ -86,16 +86,19 @@ const Instances: FC<InstanceProps> = ({ animate }) => {
 
   const animateCircle = (spheres: InstancedMesh[], displaceMent: number) => {
     spheres.forEach((sphere) => {
-      sphere.position.y += displaceMent;
+      sphere.position.y = Math.sin(Math.PI * 2 * displaceMent) + 1;
     });
   };
 
+  let elapsedTime = 0;
   useBeforeRender(() => {
     if (animate) {
+      const deltaTimeInMillis = scene!.getEngine().getDeltaTime();
+      elapsedTime += deltaTimeInMillis / 1000;
       let currentCircle;
-      for (let circle = 0; circle < 2; ++circle) {
+      for (let circle = 0; circle < 1; ++circle) {
         currentCircle = getCircle(circle);
-        animateCircle(currentCircle, 0.05);
+        animateCircle(currentCircle, elapsedTime);
       }
     }
   });
