@@ -2,7 +2,7 @@ import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { Scene, Engine } from "react-babylonjs";
 import { FC } from "react";
 import Instances from "./components/Instances";
-import { Color3 } from "@babylonjs/core";
+import { Color3, Color4 } from "@babylonjs/core";
 
 const App: FC = () => {
   return (
@@ -15,12 +15,12 @@ const App: FC = () => {
           whenVisibleOnly: true,
         }}
       >
-        <Scene>
+        <Scene clearColor={Color4.FromColor3(Color3.Black(), 1)}>
           <arcRotateCamera
             name="camera1"
             alpha={(Math.PI * 3) / 2}
             beta={Math.PI / 3}
-            radius={40}
+            radius={90}
             target={Vector3.Zero()}
           />
           <hemisphericLight
@@ -28,17 +28,6 @@ const App: FC = () => {
             intensity={0.7}
             direction={new Vector3(0, 1, 0)}
           />
-          <ground
-            name="ground"
-            width={100}
-            height={100}
-            position={new Vector3(0, -1, 0)}
-          >
-            <standardMaterial
-              name={"groundMat"}
-              diffuseColor={Color3.Black()}
-            />
-          </ground>
           <Instances animate={true} />
         </Scene>
       </Engine>

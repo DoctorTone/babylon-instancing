@@ -1,5 +1,6 @@
 html,
 body,
+canvas,
 #root {
   position: fixed;
   top: 0;

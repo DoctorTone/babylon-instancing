@@ -1,9 +1,10 @@
-import { FC, useRef } from "react";
+import { FC } from "react";
 import {
-  AbstractMesh,
   InstancedMesh,
   MeshBuilder,
   Vector3,
+  StandardMaterial,
+  Color3,
 } from "@babylonjs/core";
 import { useBeforeRender, useScene } from "react-babylonjs";
 import { SCENE } from "../state/Config";
@@ -20,6 +21,9 @@ const Instances: FC<InstanceProps> = ({ animate }) => {
     { diameter: SCENE.SPHERE_RADIUS, segments: 32 },
     scene
   );
+  const sphereMat = new StandardMaterial("sphereMat", scene!);
+  sphereMat.diffuseColor = new Color3(0.84, 0.47, 0.16);
+  sphereObject.material = sphereMat;
 
   const spherePositions: Vector3[] = [];
 
@@ -91,14 +95,19 @@ const Instances: FC<InstanceProps> = ({ animate }) => {
   };
 
   let elapsedTime = 0;
+  let DELAY = 0.03;
   useBeforeRender(() => {
     if (animate) {
       const deltaTimeInMillis = scene!.getEngine().getDeltaTime();
       elapsedTime += deltaTimeInMillis / 1000;
       let currentCircle;
-      for (let circle = 0; circle < 1; ++circle) {
+      for (let circle = 0; circle < numCircles; ++circle) {
         currentCircle = getCircle(circle);
-        animateCircle(currentCircle, elapsedTime);
+        animateCircle(currentCircle, elapsedTime + circle * DELAY);
+      }
+      if (elapsedTime >= 3) {
+        DELAY += 0.05;
+        elapsedTime = 0;
       }
     }
   });
