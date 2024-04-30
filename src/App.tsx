@@ -1,6 +1,6 @@
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { Scene, Engine } from "react-babylonjs";
-import React, { FC } from "react";
+import { FC } from "react";
 import Instances from "./components/Instances";
 
 const App: FC = () => {
@@ -27,7 +27,13 @@ const App: FC = () => {
             intensity={0.7}
             direction={new Vector3(0, 1, 0)}
           />
-          <Instances />
+          <ground
+            name="ground"
+            width={100}
+            height={100}
+            position={new Vector3(0, -1, 0)}
+          />
+          <Instances animate={true} />
         </Scene>
       </Engine>
     </div>
