@@ -1,30 +1,9 @@
-# React + TypeScript + Vite
+# Rendering and animating multiple objects
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Rendering performance is no longer a major barrier to 3D graphics on the web, despite what some people may tell you!
 
-Currently, two official plugins are available:
+This example shows over 2,500 objects not only being rendered, but being animated in real-time also.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Hopefully you find the patterns as mesmerising as I do 😀!!
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Click to see the demo here -> [Spheres](https://drt-software.com/Demos/Instancing/spheres.html)
